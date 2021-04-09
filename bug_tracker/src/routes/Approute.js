@@ -7,6 +7,7 @@ import createHistory from 'history/createBrowserHistory';
 import PrivateRoute from './PrivateRoute';
 import UserRoles from '../components/UserRoles';
 import AddProject from '../components/AddProject';
+import EditProject from '../components/EditProject';
 export const history = createHistory();
 
 const Approute =()=>{
@@ -18,6 +19,7 @@ const Approute =()=>{
                 <PrivateRoute path="/dashboard" component={Dashboard}/>
                 <PrivateRoute path="/userroles" component={UserRoles}/>
                 <PrivateRoute path="/addProject" component={AddProject}/>
+                <PrivateRoute path="/editProject/:id" component={EditProject} />
             </Switch>
         </Router>
     )

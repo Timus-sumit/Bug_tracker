@@ -56,7 +56,7 @@ router.patch('/users/:name',async(req,res)=>{
             res.send(user)
         }
     } catch (error) {
-        
+        res.status(500).send()
     }
 })
 // router.patch('/users/me',auth,async (req,res)=>{

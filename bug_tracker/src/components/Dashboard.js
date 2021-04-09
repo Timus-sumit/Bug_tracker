@@ -18,6 +18,19 @@ const Dashboard = (props)=>{
                 <h3 className=" yt-style" >Create New Project</h3>
                 </NavLink>
                 }
+                <br/>
+                <br/>
+                {props.projects.map((project)=>{
+                    return(
+                        <div>
+                            <h2>Title</h2>
+                            <p>{project.projectTitle}</p>
+                            <h3>Description</h3>
+                            <p>{project.projectDescription}</p>
+                            <NavLink to={`/editProject/${project._id}`}>Edit</NavLink>
+                        </div>
+                    )
+                })}
             </div>
         </div>
     )
@@ -29,7 +42,8 @@ const mapDispatchToProps = (dispatch)=>{
 }
 const mapStateToProps = (state)=>{
     return{
-        user:state.auth
+        user:state.auth,
+        projects:state.projects
     }
 }
 

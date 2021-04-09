@@ -16,9 +16,9 @@ export const readUser = (uid)=>{
     return(dispatch)=>{
 
      return axios.get(`http://localhost:8080/users/${uid}`).then((response)=>{
-            const {name,uid,email,position}=response.data
+            const {name,uid,email,position,_id}=response.data
 
-            dispatch({type:'LOGIN',name,uid,email,position})
+            dispatch({type:'LOGIN',name,uid,email,position,_id})
         })
 
     }

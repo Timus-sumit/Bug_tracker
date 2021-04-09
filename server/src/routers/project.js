@@ -13,13 +13,26 @@ router.post('/project',async(req,res)=>{
     }
 })
 
-router.get('/project',async(req,res)=>{
+router.get('/project/:id',async(req,res)=>{
     try{
-        const project = await Project.find({"users._id":req.body.user})
+        const project = await Project.find({"users._id":req.params.id})
         res.send(project);
     }
     catch(error){
         res.status(500).send();
+    }
+})
+
+router.patch('/project/:id',async(req,res)=>{
+    try {
+        const project = await Project.findOneAndUpdate({_id:req.params.id},{projectTitle:req.body.projectTitle,projectDescription:req.body.projectDescription})
+        if(!project){
+            res.status(404).send()
+        }else{
+            res.send(project)
+        }
+    } catch (error) {
+        
     }
 })
 
