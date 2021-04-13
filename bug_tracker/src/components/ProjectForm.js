@@ -115,7 +115,7 @@ class ProjectForm extends React.Component{
             this.state.developer.forEach((dev)=>{
                 project.users.push({_id:dev._id})
             })
-
+            console.log(project)
             this.props.onSubmit(project)
             
         }

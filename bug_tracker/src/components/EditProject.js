@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {NavLink} from 'react-router-dom';
 import { editProject, removeProject } from '../actions/projects';
 
 class EditProject extends React.Component{
@@ -72,6 +73,7 @@ class EditProject extends React.Component{
                 }}>
                     Delete Project
                 </button>
+                <NavLink to={`/manageusers/${this.props.project._id}`}>Manage Users</NavLink>
             </div>
         )
     }

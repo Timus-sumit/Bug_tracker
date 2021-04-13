@@ -28,6 +28,8 @@ const Dashboard = (props)=>{
                             <h3>Description</h3>
                             <p>{project.projectDescription}</p>
                             <NavLink to={`/editProject/${project._id}`}>Edit</NavLink>
+                            <br/>
+                            <NavLink to={`/manageusers/${project._id}`}>Manage Users</NavLink>
                         </div>
                     )
                 })}
