@@ -22,6 +22,22 @@ const projectSchema = new mongoose.Schema({
     
 })
 
+projectSchema.statics.findUserAndDelete=async(projectId,userId)=>{
+    var project = await Project.findById(projectId);
+    if(!project){
+        throw new Error('unable to find project')
+    }
+
+    project.users=project.users.filter((user)=>{
+        return user._id!=userId
+    })
+   
+    console.log(userId)
+    await project.save()
+    return project
+
+}
+
 
 const Project= mongoose.model('Project',projectSchema)
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import { removeUser } from '../actions/projects';
 
 const User = (props)=>{
     var current_user = {}
@@ -13,6 +14,13 @@ const User = (props)=>{
                 {current_user.name+"    "}
                 {current_user.email+"   "}
                 {current_user.position+"    "}
+                <button onClick={()=>{
+                    // console.log(props.projectId,current_user._id)
+                    props.dispatch(removeUser(props.projectId,current_user._id)).then(()=>{
+                        window.location.reload()
+                    })
+                }
+                }>Remove</button>
             </div>
     )
 }

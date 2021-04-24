@@ -42,3 +42,9 @@ export const removeProject = (project)=>{
         return axios.delete(`http://localhost:8080/project/${project._id}`)
     }
 }
+
+export const removeUser = (projectId,userId)=>{
+    return (dispatch=>{
+        return axios.delete(`http://localhost:8080/project/user/${projectId}/${userId}`)
+    })
+}

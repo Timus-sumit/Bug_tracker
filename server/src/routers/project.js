@@ -46,5 +46,15 @@ router.delete('/project/:id',async(req,res)=>{
     }
 })
 
+router.delete('/project/user/:id/:userid',async(req,res)=>{
+    try{
+         const project = await Project.findUserAndDelete(req.params.id,req.params.userid)
+         res.send(project)   
+
+    }catch(error){
+        res.status(400).send()
+    }
+})
+
 
 module.exports = router;

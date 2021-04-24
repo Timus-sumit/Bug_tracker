@@ -15,7 +15,7 @@ class ManageUsers extends React.Component {
                 <br/>
                 <br/>
                 {this.props.project.users.map((user)=>{
-                    return <User _id={user._id} />
+                    return <User _id={user._id} projectId={this.props.project._id} />
                 })}
             </div>
         )
