@@ -48,3 +48,14 @@ export const removeUser = (projectId,userId)=>{
         return axios.delete(`http://localhost:8080/project/user/${projectId}/${userId}`)
     })
 }
+
+export const addUser = (projectId,users)=>{
+    return (dispatch)=>{
+        // console.log(projectId,users)
+        return axios.patch(`http://localhost:8080/project/user/${projectId}`,users).then(()=>{
+            
+        }).catch(error=>{
+            console.log(error)
+        })
+    }
+}

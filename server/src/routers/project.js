@@ -37,6 +37,22 @@ router.patch('/project/:id',async(req,res)=>{
     }
 })
 
+router.patch('/project/user/:id',async(req,res)=>{
+    try {
+        const project = await Project.findById(req.params.id)
+        
+            const new_user = req.body.users
+            new_user.forEach((user)=>{
+               project.users = project.users.concat(user)
+            })
+            await project.save()
+            res.send(project)
+        
+    } catch (error) {
+        res.status(404).send(error);
+    }
+})
+
 router.delete('/project/:id',async(req,res)=>{
     try {
         const project = await Project.findOneAndDelete({_id:req.params.id})
