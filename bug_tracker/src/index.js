@@ -32,9 +32,9 @@ ReactDOM.render(<p>Loading...</p>,document.getElementById('root'))
 firebase.auth().onAuthStateChanged((user)=>{
   if(user){
           store.dispatch(readUser(user.uid)).then(()=>{
-          const role = store.getState().auth.position
+          //const role = store.getState().auth.position
         
-          if(role==='admin'){
+          
              store.dispatch(startSetUsers()).then(()=>{
               const list = store.getState().users;
               console.log(list)
@@ -53,22 +53,22 @@ firebase.auth().onAuthStateChanged((user)=>{
               })
                 
              })
-          }
-          else{
-            const current_user = store.getState().auth;
+          
+          // else{
+          //   const current_user = store.getState().auth;
 
-            store.dispatch(startSetProjects(current_user)).then(()=>{
-              const projects = store.getState().projects;
-              console.log(projects);
-              renderApp(); 
+          //   store.dispatch(startSetProjects(current_user)).then(()=>{
+          //     const projects = store.getState().projects;
+          //     console.log(projects);
+          //     renderApp(); 
   
-            if(history.location.pathname==='/'||history.location.pathname==='/signup'){
-                history.push('/dashboard')
-            } 
+          //   if(history.location.pathname==='/'||history.location.pathname==='/signup'){
+          //       history.push('/dashboard')
+          //   } 
 
-            })
+          //   })
 
-          }
+          // }
 
           // const list = store.getState().users;
           // console.log(list)

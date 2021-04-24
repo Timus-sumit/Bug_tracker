@@ -48,9 +48,11 @@ class EditProject extends React.Component{
                 projectTitle:this.state.title,
                 projectDescription:this.state.description
             }
-            this.props.dispatch(editProject(changes))
-            this.props.history.push('/dashboard')
-            window.location.reload()
+            this.props.dispatch(editProject(changes)).then(()=>{
+                window.location.reload()
+            })
+            // this.props.history.push('/dashboard')
+            // window.location.reload()
             
         }
 
@@ -67,9 +69,12 @@ class EditProject extends React.Component{
                     <button>Save Edits</button>
                 </form>
                 <button onClick={()=>{
-                    this.props.dispatch(removeProject(this.props.project))
-                    this.props.history.push('/dashboard')
-                    window.location.reload()
+                    this.props.dispatch(removeProject(this.props.project)).then(()=>{
+                        this.props.history.push('/dashboard')
+                        window.location.reload()
+                    })
+                    // this.props.history.push('/dashboard')
+                    // window.location.reload()
                 }}>
                     Delete Project
                 </button>

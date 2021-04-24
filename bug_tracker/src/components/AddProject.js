@@ -16,8 +16,11 @@ class AddProject extends React.Component {
                 <ProjectForm 
                 list={this.props.list}
                 onSubmit={(project)=>{
-                    this.props.dispatch(startAddProject(project));
-                    this.props.history.push('/dashboard')
+                    this.props.dispatch(startAddProject(project)).then(()=>{
+                        this.props.history.push('/dashboard')
+                        window.location.reload()
+                    })
+                    // this.props.history.push('/dashboard')
                 }}
                 />
             </div>
