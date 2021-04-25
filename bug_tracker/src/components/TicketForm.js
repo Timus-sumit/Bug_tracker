@@ -5,13 +5,23 @@ class TicketForm extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            title:'',
-            description:'',
-            submitter:{name:'',_id:''},
-            developer:{name:'',_id:''},
+            title:props.ticket?props.ticket.title:'',
+            description:props.ticket?props.ticket.description:'',
+            submitter:props.ticket?props.list.find((user)=>{
+                const u = props.ticket.users.find((u)=>{
+                    return user._id===u._id
+                })
+                return u && user.position==='submitter'
+            }):{name:'',_id:''},
+            developer:props.ticket?props.list.find((user)=>{
+                const u = props.ticket.users.find((u)=>{
+                    return user._id===u._id
+                })
+                return u && user.position==='developer'
+            }):{name:'',_id:''},
             project:{name:this.props.project.projectTitle,_id:this.props.project._id},
-            priority:'',
-            status:'',
+            priority:props.ticket?props.ticket.priority:'',
+            status:props.ticket?props.ticket.status:'',
             error:''
         }
     }
@@ -82,7 +92,7 @@ class TicketForm extends React.Component{
 
     onSubmit=(e)=>{
          e.preventDefault();
-         if(!this.state.title && !this.state.description && !this.state.submitter._id && !this.state.developer._id && !this.state.priority && !this.state.status){
+         if(!this.state.title || !this.state.description || !this.state.submitter._id || !this.state.developer._id || !this.state.priority || !this.state.status){
              this.setState(()=>{
                  return{
                      error:'Please Fill all the opitons !'
@@ -115,7 +125,7 @@ class TicketForm extends React.Component{
                  status:this.state.status
              }
 
-             console.log(ticket)
+             this.props.onSubmit(ticket)
          }
 
        

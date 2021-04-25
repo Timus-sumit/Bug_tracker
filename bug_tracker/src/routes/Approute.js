@@ -11,6 +11,7 @@ import EditProject from '../components/EditProject';
 import ManageUsers from '../components/ManageUsers';
 import details from '../components/details';
 import CreateTicket from '../components/CreateTicket';
+import EditTicket from '../components/EditTicket';
 export const history = createHistory();
 
 const Approute =()=>{
@@ -26,6 +27,7 @@ const Approute =()=>{
                 <PrivateRoute path="/manageusers/:id" component={ManageUsers}/>
                 <PrivateRoute path ="/details/:id" component={details}/>
                 <PrivateRoute path="/createTicket/:id" component={CreateTicket}/>
+                <PrivateRoute path="/editTicket/:id/:ticketId" component={EditTicket}/>
             </Switch>
         </Router>
     )
