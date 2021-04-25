@@ -4,7 +4,7 @@ const Project = require('../models/project');
 
 router.post('/project',async(req,res)=>{
     let new_project = {projectTitle:req.body.projectTitle,projectDescription:req.body.projectDescription,users:req.body.users}
-    console.log(new_project)
+    // console.log(new_project)
     const project = new Project(new_project)
     try {
         await project.save();
