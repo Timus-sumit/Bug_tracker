@@ -14,33 +14,57 @@ class Details extends React.Component{
 
     render(){
     return(
-        <div>
-            <h1>Title</h1>
-            <p>{this.props.project.projectTitle}</p>
-            <h1> Description</h1>
-            <p>{this.props.project.projectDescription}</p>
-            <NavLink to={`/editProject/${this.props.project._id}`}>Edit</NavLink>
+        <div className="container">
+            <br/>
+            <div className="row">
+                <div className="col-lg-6">
+                    <h1>Title:</h1>
+                    <h2>{this.props.project.projectTitle}</h2>
+                    <br/>
+                    <h1> Description:</h1>
+                    <h2>{this.props.project.projectDescription}</h2>
+                    <br/>
+                    <NavLink className="btn btn-primary stretched-link" to={`/editProject/${this.props.project._id}`}>Edit</NavLink>
+                </div>
+                <div className="col-lg-6 scroll">
+                    <div className="card table-container">
+                    <div className="list-header">
+                                <div>
+                                    <h2 className="list-item__title">Assigned Users</h2>
+                                </div>
+                            </div>
+                            {this.props.project.users.map((user)=>{
+                                return <User _id={user._id} projectId={this.props.project._id} edit={false} />
+                            })}
+                    
+                    </div>            
+                </div>
+            </div>
             <hr/>
-            <h1>Assigned Users</h1>
-            {this.props.project.users.map((user)=>{
-                return <User _id={user._id} projectId={this.props.project._id} edit={false} />
-            })}
-            <hr/>
-            <h1>Tickets</h1>
-            <NavLink to={`/createTicket/${this.props.project._id}`}>Create Ticket</NavLink>
+            <br/>
+            <NavLink className="btn btn-primary stretched-link" to={`/createTicket/${this.props.project._id}`}>Create Ticket</NavLink>
             <br/><br/>
-            {this.props.tickets.map((ticket)=>{
-                return(
-                    <div>
-                        <h2>Title</h2>
-                        <p>{ticket.title}</p>
-                        <h3>Description</h3>
-                        <p>{ticket.description}</p>
-                        <NavLink to={`/editTicket/${this.props.project._id}/${ticket._id}`}>Edit</NavLink>
-                        <hr/>
-                    </div>
-                )
-            })}
+            <div className="card">
+                <h1 className="card-header">Tickets</h1>
+                {this.props.tickets.map((ticket)=>{
+                    return(
+                        <div>
+                        <div className="list-item">
+                            <div>
+                                <h3 className="list-item__title">{ticket.title}</h3>
+                                <span className="list-item__subtitle">{ticket.description}</span>            
+                            </div>
+                            <div>
+                                <NavLink to={`/editTicket/${this.props.project._id}/${ticket._id}`}>Edit</NavLink>
+                            </div>
+                        </div> 
+                        </div>
+                    )
+                })}
+            </div>
+            <br/>
+            <br/>
+            
 
         </div>
     )
