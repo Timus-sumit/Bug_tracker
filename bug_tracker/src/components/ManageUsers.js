@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import { addUser } from '../actions/projects';
 import User from './User';
+import 'reactstrap';
 
 class ManageUsers extends React.Component {
     constructor(props){
@@ -113,52 +114,82 @@ class ManageUsers extends React.Component {
 
     render(){
         return(
-            <div>
-                <h2>Project Title:</h2>
-                <p>{this.props.project.projectTitle}</p>
+            <div className="container">
+                <h1 className="my-4">Project Title:</h1>
+                <h2>{this.props.project.projectTitle}</h2>
                 <br/>
                 <br/>
-                {this.props.project.users.map((user)=>{
-                    return <User _id={user._id} projectId={this.props.project._id} edit={true} />
-                })}
+                <div className="row">
+                    <div className="col-lg-6 scroll">
+                    <div className="card table-container">
+                    <div className="list-header">
+                                <div>
+                                    <h2 className="list-item__title">User</h2>
+                                </div>
+                            </div>
+                            {this.props.project.users.map((user)=>{
+                                return <User _id={user._id} projectId={this.props.project._id} edit={true} />
+                            })}
+                    
+                    </div>
+                    </div>
+
+                    <div className="col-lg-6 ">
+                    <div className="input-form">
+                    <form onSubmit={this.onSubmit}>
+                        <h1>Add Users</h1>
+                        {this.state.error && <p>{this.state.error}</p>}
+                        <div className="input-form__form">
+                        <select className="select" value={this.state.admin.name} onChange={this.onAdminChange}>
+                            <option value='' disabled selected hidden>Add an Admin</option>
+                            {this.props.list.map((user)=>{
+                                if(user.position === "admin"){
+                                    return <option value={user.name}>{user.name}</option>
+                                }
+                            })}
+                        </select>
+                        </div>
+                        <div className="input-form__form">
+                        <select className="select" value={this.state.manager.name} onChange={this.onManagerChange}>
+                            <option value="" disabled selected hidden>Add a Project Manager</option>
+                            {this.props.list.map((user)=>{
+                                if(user.position === "manager"){
+                                    return <option value={user.name}>{user.name}</option>
+                                }
+                            })}
+                        </select>
+                        </div>
+                        <div className="input-form__form">
+                        <select className="select" value={this.state.submitter.name} onChange={this.onSubmitterChange}>
+                            <option value="" disabled selected hidden>Add a Submitter</option>
+                            {this.props.list.map((user)=>{
+                                if(user.position === "submitter"){
+                                    return <option value={user.name}>{user.name}</option>
+                                }
+                            })}
+                        </select>
+                        </div>
+                        <div className="input-form__form">
+                        <select className="select" value={this.state.developer.name} onChange={this.onDeveloperChange}>
+                            <option value="" disabled selected hidden>Add a Developer</option>
+                            {this.props.list.map((user)=>{
+                                if(user.position === "developer"){
+                                    return <option value={user.name}>{user.name}</option>
+                                }
+                            })}
+                        </select>
+                        </div>
+                        <div className="input-form__form">
+                            <button className="btn btn-success">Add</button>
+                        </div>
+                        
+                    </form>
+                    </div>
+                    </div>
+                </div>
                 
-                <form onSubmit={this.onSubmit}>
-                    <h3>Add Users</h3>
-                    {this.state.error && <p>{this.state.error}</p>}
-                    <select value={this.state.admin.name} onChange={this.onAdminChange}>
-                        <option value='' disabled selected hidden>Add an Admin</option>
-                        {this.props.list.map((user)=>{
-                            if(user.position === "admin"){
-                                return <option value={user.name}>{user.name}</option>
-                            }
-                        })}
-                    </select>
-                    <select value={this.state.manager.name} onChange={this.onManagerChange}>
-                        <option value="" disabled selected hidden>Add a Project Manager</option>
-                        {this.props.list.map((user)=>{
-                            if(user.position === "manager"){
-                                return <option value={user.name}>{user.name}</option>
-                            }
-                        })}
-                    </select>
-                    <select value={this.state.submitter.name} onChange={this.onSubmitterChange}>
-                        <option value="" disabled selected hidden>Add a Submitter</option>
-                        {this.props.list.map((user)=>{
-                            if(user.position === "submitter"){
-                                return <option value={user.name}>{user.name}</option>
-                            }
-                        })}
-                    </select>
-                    <select value={this.state.developer.name} onChange={this.onDeveloperChange}>
-                        <option value="" disabled selected hidden>Add a Developer</option>
-                        {this.props.list.map((user)=>{
-                            if(user.position === "developer"){
-                                return <option value={user.name}>{user.name}</option>
-                            }
-                        })}
-                    </select>
-                    <button>Add</button>
-                </form>
+                
+                
 
 
             </div>

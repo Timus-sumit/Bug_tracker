@@ -1,0 +1,34 @@
+.text-input{
+    border: 1px solid #cacccd;
+    height : 50px;
+    font-size :medium;
+    font-weight: 300;
+    padding: .8rem;
+}
+
+.select{
+    @extend .text-input;
+}
+
+.text-area{
+    @extend .text-input;
+    height :10rem ;
+}
+
+.input-form{
+    display: flex;
+    margin: $m-size;
+    flex-direction: column;
+    @media (min-width: 45rem) {
+        flex-direction: row;
+        margin: $l-size;
+    }
+}
+
+.input-form__form{
+  
+    margin-bottom: 1rem;
+    @media (min-width: 45rem) {
+        margin-left: $m-size;
+    }
+}

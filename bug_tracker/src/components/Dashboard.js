@@ -2,39 +2,42 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {NavLink} from 'react-router-dom';
 import {startLogout} from '../actions/auth';
+import {Card} from 'reactstrap';
 
 const Dashboard = (props)=>{
     return (
         <div>
-            <h2>Dashboard</h2>
-            <p>Hello {props.user.name}</p>
-            <h3>Logged in as {props.user.position}</h3>
-            <button onClick={props.startLogout}>Logout</button>
             <br/>
             <br/>
-            <div>
+            <div className="container">
                 {props.user.position==='admin' && 
-                <NavLink to='/addProject'>
-                <h3 className=" yt-style" >Create New Project</h3>
+                <NavLink to='/addProject' className="btn btn-primary stretched-link">
+                    Create New Project
                 </NavLink>
                 }
                 <br/>
                 <br/>
+                <Card>
+                    <h1 className="card-header">Your Projects</h1>
                 {props.projects.map((project)=>{
                     return(
                         <div>
-                            <h2>Title</h2>
-                            <p>{project.projectTitle}</p>
-                            <h3>Description</h3>
-                            <p>{project.projectDescription}</p>
-                            <NavLink to={`/details/${project._id}`}>Details</NavLink>
-                            <br/>
-                            <NavLink to={`/manageusers/${project._id}`}>Manage Users</NavLink>
-                            <br/>
-                            <hr/>
+                            <div className="list-item">
+                                <div>
+                                    <h3 className="list-item__title">{project.projectTitle}</h3>
+                                    <span className="list-item__subtitle">{project.projectDescription}</span>            
+                                </div>
+                                <div>
+                                    <NavLink to={`/details/${project._id}`}>Details</NavLink>
+                                    <br/>
+                                    <NavLink to={`/manageusers/${project._id}`}>Manage Users</NavLink>
+                                    <br/>
+                                </div>
+                            </div> 
                         </div>
                     )
                 })}
+                </Card>
             </div>
         </div>
     )

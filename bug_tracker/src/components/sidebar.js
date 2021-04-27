@@ -71,22 +71,7 @@ class Sidebar extends React.Component {
           {/* User */}
           <Nav className="align-items-center d-md-none">
             <UncontrolledDropdown nav>
-              <DropdownToggle nav>
-                <Media className="align-items-center">
-                  <span className="avatar avatar-sm rounded-circle">
-                    
-
-                  </span>
-                </Media>
-              </DropdownToggle>
               <DropdownMenu className="dropdown-menu-arrow" right>
-                <DropdownItem className="noti-title" header tag="div">
-                  <h6 className="text-overflow m-0">Welcome!</h6>
-                </DropdownItem>
-                <DropdownItem to="/admin/user-profile" tag={Link}>
-                  <i className="ni ni-single-02" />
-                  <span>My profile</span>
-                </DropdownItem>
                 <DropdownItem href="#pablo" onClick={this.props.startLogout}>
                   <i className="ni ni-user-run" />
                   <span>Logout</span>
@@ -123,9 +108,6 @@ class Sidebar extends React.Component {
                         <UncontrolledDropdown nav>
                         <DropdownToggle nav>
                         <Media className="align-items-center">
-                            <span className="avatar avatar-sm rounded-circle">
-                            
-                            </span>
                             <Media className="ml-2 d-none d-lg-block">
                             <span className="mb-2 text-dark font-weight-bold">
                                 {this.props.user.name}
@@ -143,13 +125,13 @@ class Sidebar extends React.Component {
                 </NavItem> 
                 <NavItem className="pl-4">
                     <NavLink to="/dashboard">
-                        <h3 className="text-black yt-style" >Dashboard</h3>
+                        <p className="text-black yt-style" >Dashboard</p>
                     </NavLink>
                 </NavItem>
                 {this.props.user.position==='admin' && 
                 <NavItem className="pl-4">
                 <NavLink to='/userroles'>
-                <h3 className="text-black yt-style" >Manage User Roles</h3>
+                <p className="text-black yt-style" >Manage User Roles</p>
                 </NavLink>
                 </NavItem> }
 
