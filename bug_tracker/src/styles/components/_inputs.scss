@@ -10,6 +10,14 @@
     @extend .text-input;
 }
 
+.select-dev{
+    border: 1px solid #cacccd;
+    height : 100px;
+    font-size :medium;
+    font-weight: 300;
+    padding: .8rem;
+}
+
 .text-area{
     @extend .text-input;
     height :10rem ;
@@ -31,4 +39,9 @@
     @media (min-width: 45rem) {
         margin-left: $m-size;
     }
+}
+
+.input-group{
+    margin-bottom: .5rem;
+    padding-bottom: 0.5rem;
 }

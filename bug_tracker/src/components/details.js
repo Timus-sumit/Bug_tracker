@@ -22,7 +22,7 @@ class Details extends React.Component{
                     <h2>{this.props.project.projectTitle}</h2>
                     <br/>
                     <h1> Description:</h1>
-                    <h2>{this.props.project.projectDescription}</h2>
+                    <h3>{this.props.project.projectDescription}</h3>
                     <br/>
                     <NavLink className="btn btn-primary stretched-link" to={`/editProject/${this.props.project._id}`}>Edit</NavLink>
                 </div>

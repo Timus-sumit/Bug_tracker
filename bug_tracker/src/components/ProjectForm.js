@@ -1,5 +1,5 @@
 import React from 'react';
-
+import 'reactstrap';
 
 class ProjectForm extends React.Component{
     constructor(props){
@@ -122,46 +122,62 @@ class ProjectForm extends React.Component{
     }
     render(){
         return(
-            <div>
-                <form onSubmit={this.onSubmit}>
+            <div className="container">
+                
+                <form className="form" onSubmit={this.onSubmit}>
                     {this.state.error && <p>{this.state.error}</p>}
-                    <input type="text" placeholder="Project Title" value={this.state.title} onChange={this.onTitleChange} autoFocus/>
-                    <textarea type="text" placeholder="Description" value={this.state.description} onChange={this.onDescriptionChange}/>
-                    <h3>Assign Users</h3>
-                    <select value={this.state.admin.name} onChange={this.onAdminChange}>
-                        <option value='' disabled selected hidden>Select an Admin</option>
-                        {this.props.list.map((user)=>{
-                            if(user.position === "admin"){
-                            return <option value={user.name}>{user.name}</option>
-                            }
-                        })}
-                    </select>
-                    <select value={this.state.manager.name} onChange={this.onManagerChange}>
-                        <option value="" disabled selected hidden>Select a Project Manager</option>
-                        {this.props.list.map((user)=>{
-                            if(user.position === "manager"){
-                            return <option value={user.name}>{user.name}</option>
-                            }
-                        })}
-                    </select>
-                    <select value={this.state.submitter.name} onChange={this.onSubmitterChange}>
-                        <option value="" disabled selected hidden>Select a Submitter</option>
-                        {this.props.list.map((user)=>{
-                            if(user.position === "submitter"){
-                            return <option value={user.name}>{user.name}</option>
-                            }
-                        })}
-                    </select>
-                    <select multiple size="3" value={this.state.developer.name} onChange={this.onDeveloperChange}>
-                        <option value="" disabled selected >Select a Developer</option>
-                        {this.props.list.map((user)=>{
-                            if(user.position === "developer"){
-                            return <option value={user.name}>{user.name}</option>
-                            }
-                        })}
-                    </select>
-                    <button>Create</button>
+                    <div className="input-group">
+                        <input className="form-control" type="text" placeholder="Project Title" value={this.state.title} onChange={this.onTitleChange} autoFocus/>
+                    </div>
+                    <div className="input-group">
+                        <textarea className="form-control" type="text" placeholder="Description" value={this.state.description} onChange={this.onDescriptionChange}/>
+                    </div>
+                    <div >
+                        <select className="select" value={this.state.admin.name} onChange={this.onAdminChange}>
+                            <option value='' disabled selected hidden>Select an Admin</option>
+                            {this.props.list.map((user)=>{
+                                if(user.position === "admin"){
+                                return <option  value={user.name}>{user.name}</option>
+                                }
+                            })}
+                        </select>
+                    </div>
+                    <div className="input-group" >
+                        <select className="select" value={this.state.manager.name} onChange={this.onManagerChange}>
+                            <option value="" disabled selected hidden>Select a Project Manager</option>
+                            {this.props.list.map((user)=>{
+                                if(user.position === "manager"){
+                                return <option value={user.name}>{user.name}</option>
+                                }
+                            })}
+                        </select>
+                    </div>
+                    <div className="input-group">
+                        <select className="select" value={this.state.submitter.name} onChange={this.onSubmitterChange}>
+                            <option value="" disabled selected hidden>Select a Submitter</option>
+                            {this.props.list.map((user)=>{
+                                if(user.position === "submitter"){
+                                return <option value={user.name}>{user.name}</option>
+                                }
+                            })}
+                        </select>
+                    </div>
+                    <div className="input-group" >
+                        <select className="select-dev" multiple size="3" value={this.state.developer.name} onChange={this.onDeveloperChange}>
+                            <option value="" disabled selected >Select a Developer</option>
+                            {this.props.list.map((user)=>{
+                                if(user.position === "developer"){
+                                return <option value={user.name}>{user.name}</option>
+                                }
+                            })}
+                        </select>
+                    </div>
+                    <div className="input-group" >
+                        <button className="btn btn-success">Create</button>
+                    </div>
                 </form>
+                
+                
             </div>
         )
     }

@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {NavLink} from 'react-router-dom';
 import { editProject, removeProject } from '../actions/projects';
+import 'reactstrap';
 
 class EditProject extends React.Component{
     constructor(props){
@@ -60,15 +61,26 @@ class EditProject extends React.Component{
 
     render(){
         return(
-            <div>
+            <div className="container">
                 <h1>Edit Project</h1>
-                <form onSubmit={this.onSubmit}>
+                <br/>
+                <form className="form" onSubmit={this.onSubmit}>
                     {this.state.error && <p>{this.state.error}</p>}
-                    <input type="text" placeholder="Project Title" value={this.state.title} onChange={this.onTitleChange} autoFocus/>
-                    <textarea type="text" placeholder="Description" value={this.state.description} onChange={this.onDescriptionChange}/>
-                    <button>Save Edits</button>
+                    <h2>Title :</h2>
+                    <div className="input-group">
+                        <input className="form-control" type="text" placeholder="Project Title" value={this.state.title} onChange={this.onTitleChange} autoFocus/>
+                    </div>
+                    <h2>Description :</h2>
+                    <div className="input-group">
+                        <textarea className="form-control" type="text" placeholder="Description" value={this.state.description} onChange={this.onDescriptionChange}/>
+                    </div>
+                    <div className="input-group">
+                        <button className="btn btn-success">Save Edits</button>
+                    </div>
                 </form>
-                <button onClick={()=>{
+                <hr/>
+                <br/>
+                <button className="btn btn-danger" onClick={()=>{
                     this.props.dispatch(removeProject(this.props.project)).then(()=>{
                         this.props.history.push('/dashboard')
                         window.location.reload()
@@ -78,7 +90,7 @@ class EditProject extends React.Component{
                 }}>
                     Delete Project
                 </button>
-                <NavLink to={`/manageusers/${this.props.project._id}`}>Manage Users</NavLink>
+                <NavLink className="btn btn-primary" to={`/manageusers/${this.props.project._id}`}>Manage Users</NavLink>
             </div>
         )
     }

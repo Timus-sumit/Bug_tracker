@@ -2,10 +2,12 @@ import React from 'react';
 import {connect} from 'react-redux';
 import { createTicket } from '../actions/tickets';
 import TicketForm from './TicketForm';
+import 'reactstrap';
 
 const CreateTicket = (props)=>{
     return(
-        <div>
+        <div className="container">
+            <br/>
             <h1>Create Ticket</h1>
             <TicketForm list={props.list} project={props.project} onSubmit={(ticket)=>{
                 props.dispatch(createTicket(ticket)).then(()=>{

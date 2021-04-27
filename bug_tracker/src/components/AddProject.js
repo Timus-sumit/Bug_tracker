@@ -11,7 +11,7 @@ class AddProject extends React.Component {
 
     render(){
         return (
-            <div>
+            <div className="container my-4">
                 <h1>Create New Project</h1>
                 <ProjectForm 
                 list={this.props.list}

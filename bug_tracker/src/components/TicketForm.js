@@ -1,5 +1,5 @@
 import React from 'react';
-
+import 'reactstrap';
 
 class TicketForm extends React.Component{
     constructor(props){
@@ -133,46 +133,81 @@ class TicketForm extends React.Component{
     render(){
         return(
             <div>
-                <form onSubmit={this.onSubmit}>
+                <form className="form" onSubmit={this.onSubmit}>
+                    <br/>
                     {this.state.error && <p>{this.state.error}</p>}
-                    <input type="text" placeholder=" Title" value={this.state.title} onChange={this.onTitleChange} autoFocus/>
-                    <textarea type="text" placeholder="Description" value={this.state.description} onChange={this.onDescriptionChange}/>
-                    <select value={this.state.submitter.name} onChange={this.onSubmitterChange}>
-                        <option value="" disabled selected hidden>Select a Submitter</option>
-                        {this.props.project.users.map((u)=>{
-                            const user = this.props.list.find((user)=>{
-                                return user._id===u._id
-                            })
-                            if(user.position === "submitter"){
-                            return <option value={user.name}>{user.name}</option>
-                            }
-                        })}
-                    </select>
-                    <select value={this.state.developer.name} onChange={this.onDeveloperChange}>
-                        <option value="" disabled selected hidden >Select a Developer</option>
-                        {this.props.project.users.map((u)=>{
-                            const user = this.props.list.find((user)=>{
-                                return user._id===u._id
-                            })
-                            if(user.position === "developer"){
-                            return <option value={user.name}>{user.name}</option>
-                            }
-                        })}
-                    </select>
-                    <input type="text" placeholder=" Project" value={this.state.project.name} disabled />
-                    <select value={this.state.priority} onChange={this.onPriorityChange}>
-                        <option value="" disabled selected hidden>Priority Level</option>
-                        <option value="low">low</option>
-                        <option value="medium">medium</option>
-                        <option value="high">high</option>
-                    </select>
-                    <select value={this.state.status} onChange={this.onStatusChange}>
-                        <option value="" disabled selected hidden>Ticket Status</option>
-                        <option value="Open">Open</option>
-                        <option value="In Progress">In Progress</option>
-                        <option value="Close">Close</option>
-                    </select>
-                    <button>Create</button>
+                    <h2>Title :</h2>
+                    <div className="input-group">
+                    <input className="form-control" type="text" placeholder=" Title" value={this.state.title} onChange={this.onTitleChange} autoFocus/>
+                    </div>
+                    <h2>Description :</h2>
+                    <div className="input-group">
+                    <textarea className="form-control" type="text" placeholder="Description" value={this.state.description} onChange={this.onDescriptionChange}/>
+                    </div>
+                    <h2>Project Name :</h2>
+                    <div className="input-group">
+                        <input className="form-control" type="text" placeholder=" Project" value={this.state.project.name} disabled />
+                    </div>
+                    <div className="row">
+                        <div className="col-lg-3">
+                            <h2>Submitter :</h2>
+                            <div className="input-group">
+                            <select className="select" value={this.state.submitter.name} onChange={this.onSubmitterChange}>
+                                <option value="" disabled selected hidden>Select a Submitter</option>
+                                {this.props.project.users.map((u)=>{
+                                    const user = this.props.list.find((user)=>{
+                                        return user._id===u._id
+                                    })
+                                    if(user.position === "submitter"){
+                                    return <option value={user.name}>{user.name}</option>
+                                    }
+                                })}
+                            </select>
+                            </div>
+                        </div>
+                        <div className="col-lg-3">
+                            <h2>Developer :</h2>
+                            <div className="input-group">
+                            <select className="select" value={this.state.developer.name} onChange={this.onDeveloperChange}>
+                                <option value="" disabled selected hidden >Select a Developer</option>
+                                {this.props.project.users.map((u)=>{
+                                    const user = this.props.list.find((user)=>{
+                                        return user._id===u._id
+                                    })
+                                    if(user.position === "developer"){
+                                    return <option value={user.name}>{user.name}</option>
+                                    }
+                                })}
+                            </select>
+                            </div>
+                        </div>
+                        <div className="col-lg-3">
+                            <h2>Priority Level :</h2>
+                            <div className="input-group">
+                            <select className="select" value={this.state.priority} onChange={this.onPriorityChange}>
+                                <option value="" disabled selected hidden>Priority Level</option>
+                                <option value="low">low</option>
+                                <option value="medium">medium</option>
+                                <option value="high">high</option>
+                            </select>
+                            </div>
+                        </div>
+                        <div className="col-lg-3">
+                            <h2>Ticket Status:</h2>
+                            <div className="input-group">
+                            <select className="select" value={this.state.status} onChange={this.onStatusChange}>
+                                <option value="" disabled selected hidden>Ticket Status</option>
+                                <option value="Open">Open</option>
+                                <option value="In Progress">In Progress</option>
+                                <option value="Close">Close</option>
+                            </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div className="input-group">
+                    <button className="btn btn-success">Create</button>
+                    </div>
                 </form>
             </div>
         )
