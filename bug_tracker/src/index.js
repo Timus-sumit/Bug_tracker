@@ -11,6 +11,7 @@ import {Provider} from 'react-redux';
 import {readUser} from './actions/auth';
 import {startSetUsers} from './actions/users';
 import {startSetProjects} from './actions/projects';
+import { setUserTickets } from './actions/tickets';
 
 const store = configureStore();
 const jsx = (
@@ -44,11 +45,14 @@ firebase.auth().onAuthStateChanged((user)=>{
               store.dispatch(startSetProjects(current_user)).then(()=>{
                 const projects = store.getState().projects;
                console.log(projects);
+              store.dispatch(setUserTickets(current_user._id)).then(()=>{
                 renderApp(); 
     
-              if(history.location.pathname==='/'||history.location.pathname==='/signup'){
-                  history.push('/dashboard')
-              } 
+                if(history.location.pathname==='/'||history.location.pathname==='/signup'){
+                    history.push('/home')
+                } 
+              })
+               
 
               })
                 

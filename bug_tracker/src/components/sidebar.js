@@ -123,6 +123,11 @@ class Sidebar extends React.Component {
                         </DropdownMenu>
                     </UncontrolledDropdown>
                 </NavItem> 
+                <NavItem className="pl-4">
+                    <NavLink to="/home">
+                        <p className="text-black yt-style" >Home</p>
+                    </NavLink>
+                </NavItem>
                 {this.props.user.position==='admin' && 
                 <NavItem className="pl-4">
                 <NavLink to='/userroles'>

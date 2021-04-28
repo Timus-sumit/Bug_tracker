@@ -13,6 +13,7 @@ import details from '../components/details';
 import CreateTicket from '../components/CreateTicket';
 import EditTicket from '../components/EditTicket';
 import UserTickets from '../components/UserTickets';
+import Home from '../components/Home';
 export const history = createHistory();
 
 const Approute =()=>{
@@ -30,6 +31,7 @@ const Approute =()=>{
                 <PrivateRoute path="/createTicket/:id" component={CreateTicket}/>
                 <PrivateRoute path="/editTicket/:id/:ticketId" component={EditTicket}/>
                 <PrivateRoute path="/userTickets" component={UserTickets}/>
+                <PrivateRoute path="/home" component={Home}/>
             </Switch>
         </Router>
     )
