@@ -197,16 +197,18 @@ class TicketForm extends React.Component{
                             <div className="input-group">
                             <select className="select" value={this.state.status} onChange={this.onStatusChange}>
                                 <option value="" disabled selected hidden>Ticket Status</option>
+                                <option value="New">New</option>
                                 <option value="Open">Open</option>
                                 <option value="In Progress">In Progress</option>
-                                <option value="Close">Close</option>
+                                <option value="Resolved">Resolved</option>
+                                <option value="Needs More Info">Needs More Info</option>
                             </select>
                             </div>
                         </div>
                     </div>
                     
                     <div className="input-group">
-                    <button className="btn btn-success">Create</button>
+                    <button className="btn btn-success">{this.props.ticket?'Save':'Create'}</button>
                     </div>
                 </form>
             </div>

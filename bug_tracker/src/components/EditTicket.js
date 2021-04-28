@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { createTicket } from '../actions/tickets';
+import { deleteTicket, updateTicket } from '../actions/tickets';
 import TicketForm from './TicketForm';
 import 'reactstrap';
 
@@ -8,12 +8,24 @@ const EditTicket = (props)=>{
     return(
         <div className="container">
             <h1>Edit Ticket</h1>
-            <TicketForm list={props.list} project={props.project} ticket={props.ticket} onSubmit={(ticket)=>{
-                props.dispatch(createTicket(ticket)).then(()=>{
+            <TicketForm list={props.list} project={props.project} ticket={props.ticket} onSubmit={(body)=>{
+                props.dispatch(updateTicket(body,props.ticket._id)).then(()=>{
                     props.history.push(`/details/${props.project._id}`)
                     window.location.reload()
                 })
             }} />
+            <button className="btn btn-danger my-3 " onClick={()=>{
+                props.dispatch(deleteTicket(props.ticket._id)).then(()=>{
+                    props.history.push(`/details/${props.project._id}`)
+                    window.location.reload()
+                })
+                // this.props.history.push('/dashboard')
+                // window.location.reload()
+            }}>
+                Delete Ticket
+            </button>
+            <br/>
+            <br/>
         </div>
     )
 }

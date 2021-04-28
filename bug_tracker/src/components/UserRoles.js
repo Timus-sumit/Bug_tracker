@@ -56,7 +56,7 @@ class UserRoles extends React.Component{
     render(){
         return(
             <div className="container">
-                <h1 className="my-4">Manage User Roles</h1>
+                <h1 className="my-4">Manage Role Assignment</h1>
                 <div className="row"> 
                     <div className="col-lg-6 scroll">
                     <div className="card table-container">

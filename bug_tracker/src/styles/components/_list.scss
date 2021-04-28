@@ -20,6 +20,19 @@
         background: #f7f7f7;
     }
 }
+.list-item-ticket{
+    display: flex;
+    justify-content: space-evenly;
+    border: 1px solid darken(#f7f7f7,7);
+    border-top: none;
+    padding: $s-size;
+    text-decoration: none;
+    color: black;
+    transition: background .1s ease;
+    &:hover{
+        background: #f7f7f7;
+    }
+}
 
 .list-item__title{
     margin:.5rem 0 ;
