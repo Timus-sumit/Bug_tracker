@@ -1,0 +1,10 @@
+.nav-item{
+  
+    padding: 0.5rem;
+    text-decoration: none;
+    color: black;
+    transition: background .1s ease;
+    &:hover{
+        background: #f7f7f7;
+    }
+}

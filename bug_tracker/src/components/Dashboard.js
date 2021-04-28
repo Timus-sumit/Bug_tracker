@@ -38,6 +38,9 @@ const Dashboard = (props)=>{
                     )
                 })}
                 </Card>
+                <hr/>
+                <br/>
+                <br/>
             </div>
         </div>
     )

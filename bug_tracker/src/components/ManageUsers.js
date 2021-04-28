@@ -116,7 +116,7 @@ class ManageUsers extends React.Component {
         return(
             <div className="container">
                 <h1 className="my-4">Project Title:</h1>
-                <h2>{this.props.project.projectTitle}</h2>
+                <h2 className="pageheader">{this.props.project.projectTitle}</h2>
                 <br/>
                 <br/>
                 <div className="row">

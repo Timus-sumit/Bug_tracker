@@ -19,13 +19,13 @@ class Details extends React.Component{
             <div className="row">
                 <div className="col-lg-6">
                     <h1>Project Title:</h1>
-                    <h2>{this.props.project.projectTitle}</h2>
+                    <h2 className="pageheader">{this.props.project.projectTitle}</h2>
                     <br/>
                     <NavLink className="btn btn-primary stretched-link" to={`/editProject/${this.props.project._id}`}>Edit</NavLink>
                 </div>
                 <div className="col-lg-6">
                     <h1> Description:</h1>
-                    <h3>{this.props.project.projectDescription}</h3>
+                    <h3 className="pageheader">{this.props.project.projectDescription}</h3>
                 </div>
             </div>
             <br/>

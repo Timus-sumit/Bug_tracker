@@ -62,9 +62,9 @@ class Sidebar extends React.Component {
           </button>
           {/* Brand */}
             <NavbarBrand className="pt-0 text-center brand" >
-              <Link to="/dashboard"> 
+              <Link to="/home"> 
               
-
+              <h1 className="pageheader">BUG TRACKER</h1>
 
               </Link> 
             </NavbarBrand>
@@ -104,44 +104,29 @@ class Sidebar extends React.Component {
             {/* Form */}
             {/* Navigation */}
             <Nav navbar>
-                <NavItem>
-                        <UncontrolledDropdown nav>
-                        <DropdownToggle nav>
-                        <Media className="align-items-center">
-                            <Media className="ml-2 d-none d-lg-block">
-                            <span className="mb-2 text-dark font-weight-bold">
-                                {this.props.user.name}
-                            </span>
-                             </Media>
-                        </Media>
-                        </DropdownToggle>
-                        <DropdownMenu className="dropdown-menu-arrow" right>
-                        <DropdownItem  onClick={this.props.startLogout}>
-                            <i className="ni ni-user-run" />
-                            <span>Logout</span>
-                        </DropdownItem>
-                        </DropdownMenu>
-                    </UncontrolledDropdown>
-                </NavItem> 
-                <NavItem className="pl-4">
-                    <NavLink to="/home">
-                        <p className="text-black yt-style" >Home</p>
+                <NavItem className="pl-4 my-1">
+                    <NavLink to="/home" className="row">
+                        <i class="fas fa-home mx-2"></i>
+                        <h3 className="text-black  pageheader" >Home</h3>
                     </NavLink>
                 </NavItem>
                 {this.props.user.position==='admin' && 
-                <NavItem className="pl-4">
-                <NavLink to='/userroles'>
-                <p className="text-black yt-style" >Manage Role Assignmet</p>
+                <NavItem className="pl-4 my-1">
+                <NavLink to='/userroles' className="row">
+                <i class="fas fa-user-friends mx-2"></i>
+                <h3 className="text-black yt-style pageheader" >Manage Role Assignmet</h3>
                 </NavLink>
                 </NavItem> }
-                <NavItem className="pl-4">
-                <NavLink to="/userTickets">
-                    <p className="text-black yt-style" >My Tickets</p>
+                <NavItem className="pl-4 my-1">
+                <NavLink to="/userTickets" className="row">
+                    <i class="fas fa-ticket-alt mx-2"></i>
+                    <h3 className="text-black yt-style pageheader" >My Tickets</h3>
                 </NavLink>
                 </NavItem>
-                <NavItem className="pl-4">
-                    <NavLink to="/dashboard">
-                        <p className="text-black yt-style" >My Projects</p>
+                <NavItem className="pl-4 my-1">
+                    <NavLink to="/dashboard" className="row">
+                        <i class="fas fa-clipboard mx-2"></i>
+                        <h3 className="text-black yt-style pageheader" >My Projects</h3>
                     </NavLink>
                 </NavItem>
  

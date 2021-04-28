@@ -38,6 +38,9 @@ class UserTickets extends React.Component {
                     )
                 })}
             </div>
+            <br/>
+            <br/>
+            <hr/>
         </div>
     )
     }
