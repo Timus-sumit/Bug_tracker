@@ -2,7 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import {NavLink} from 'react-router-dom';
 import { setProjectTickets } from '../actions/tickets';
+import TicketFilter from './TicketFilter';
 import User from './User';
+import getVisibleData from '../selectors/ticket';
+
 class Details extends React.Component{
     constructor(props){
         super(props)
@@ -19,19 +22,27 @@ class Details extends React.Component{
             <div className="row">
                 <div className="col-lg-6">
                     <h1>Project Title:</h1>
-                    <h2 className="pageheader">{this.props.project.projectTitle}</h2>
+                    <h2 className="pageheader-bold">{this.props.project.projectTitle}</h2>
                     <br/>
 
                     {(this.props.user.position==='admin' || this.props.user.position==='manager')&& <NavLink className="btn btn-primary stretched-link" to={`/editProject/${this.props.project._id}`}>Edit</NavLink>}
                 </div>
                 <div className="col-lg-6">
                     <h1> Description:</h1>
-                    <h3 className="pageheader">{this.props.project.projectDescription}</h3>
+                    <h3 className="pageheader-bold">{this.props.project.projectDescription}</h3>
                 </div>
             </div>
             <br/>
             <br/>
-            <NavLink className="btn btn-primary stretched-link" to={`/createTicket/${this.props.project._id}`}>Create Ticket</NavLink>
+            <div className="row">
+                <div className="col-lg-3">
+                     <NavLink className="btn btn-primary stretched-link" to={`/createTicket/${this.props.project._id}`}>Create Ticket</NavLink>
+                </div>
+                <div className="col-lg-9">
+                    <TicketFilter/>
+                </div>
+            </div>
+            
             <br/><br/>
             <div className="row">
                 <div className="col-lg-6 scroll">
@@ -90,7 +101,7 @@ const mapStateToProps = (state,props)=>{
         project: state.projects.find((project)=>{
             return project._id===props.match.params.id;
         }),
-        tickets: state.tickets,
+        tickets: getVisibleData(state.tickets,state.filter),
         user: state.auth
     }
 }

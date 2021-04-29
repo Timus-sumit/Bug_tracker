@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 import {NavLink} from 'react-router-dom';
 import {startLogout} from '../actions/auth';
 import {Card} from 'reactstrap';
+import getVisibleData from '../selectors/project';
+import {setTextFilter} from '../actions/filter';
 
 const Dashboard = (props)=>{
     return (
@@ -10,13 +12,23 @@ const Dashboard = (props)=>{
             <br/>
             <br/>
             <div className="container">
-                {(props.user.position==='admin' || props.user.position==='manager') && 
-                <NavLink to='/addProject' className="btn btn-primary stretched-link">
-                    Create New Project
-                </NavLink>
-                }
-                <br/>
-                <br/>
+                <div className="row">
+                    <div className="col">
+                        {(props.user.position==='admin' || props.user.position==='manager') && 
+                        <NavLink to='/addProject' className="btn btn-primary stretched-link">
+                            Create New Project
+                        </NavLink>
+                        }
+                    </div>
+                    <div className="col text-right">
+                    <div className="input-form__form">
+                        <input type='text' className="text-input" value={props.filter.text} placeholder="Search Projects" onChange={(e)=>{
+                            props.dispatch(setTextFilter(e.target.value))
+                        }}/>
+                     </div>
+                    </div>
+                </div>
+                
                 <Card>
                     <h1 className="card-header">Your Projects</h1>
                 {props.projects.map((project)=>{
@@ -47,13 +59,15 @@ const Dashboard = (props)=>{
 }
 const mapDispatchToProps = (dispatch)=>{
     return {
-        startLogout : ()=>dispatch(startLogout())
+        startLogout : ()=>dispatch(startLogout()),
+        dispatch
     }
 }
 const mapStateToProps = (state)=>{
     return{
         user:state.auth,
-        projects:state.projects
+        projects:getVisibleData(state.projects,state.filter),
+        filter:state.filter
     }
 }
 

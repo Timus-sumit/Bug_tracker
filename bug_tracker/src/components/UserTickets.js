@@ -3,7 +3,8 @@ import 'reactstrap';
 import {connect} from 'react-redux';
 import { setUserTickets } from '../actions/tickets';
 import {NavLink} from 'react-router-dom';
-
+import TicketFilter from './TicketFilter';
+import getVisibleData from '../selectors/ticket';
 
 class UserTickets extends React.Component {
     constructor(props){
@@ -18,6 +19,7 @@ class UserTickets extends React.Component {
     return(
         <div className="container">
             <br/>
+            <TicketFilter/>
             <div className="card my-5">
                 <h1 className="card-header">Your Tickets</h1>
                 
@@ -49,7 +51,7 @@ class UserTickets extends React.Component {
 const mapStateToProps = (state)=>{
     return{
         user : state.auth,
-        tickets:state.tickets
+        tickets:getVisibleData(state.tickets,state.filter)
 
     }
 }
