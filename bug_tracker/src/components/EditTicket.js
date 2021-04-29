@@ -8,13 +8,13 @@ const EditTicket = (props)=>{
     return(
         <div className="container">
             <h1>Edit Ticket</h1>
-            <TicketForm list={props.list} project={props.project} ticket={props.ticket} onSubmit={(body)=>{
+            <TicketForm list={props.list} user={props.user} project={props.project} ticket={props.ticket} onSubmit={(body)=>{
                 props.dispatch(updateTicket(body,props.ticket._id)).then(()=>{
                     props.history.push(`/details/${props.project._id}`)
                     window.location.reload()
                 })
             }} />
-            <button className="btn btn-danger my-3 " onClick={()=>{
+            <button disabled={(props.ticket && (props.user.position==='developer'||props.user.position==='submitter'))?true:false} className="btn btn-danger my-3 " onClick={()=>{
                 props.dispatch(deleteTicket(props.ticket._id)).then(()=>{
                     props.history.push(`/details/${props.project._id}`)
                     window.location.reload()
@@ -38,7 +38,8 @@ const mapStateToProps = (state,props)=>{
         ticket : state.tickets.find((ticket)=>{
             return ticket._id===props.match.params.ticketId;
         }),
-        list : state.users
+        list : state.users,
+        user : state.auth
     }
 }
 

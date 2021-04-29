@@ -10,7 +10,7 @@ const Dashboard = (props)=>{
             <br/>
             <br/>
             <div className="container">
-                {props.user.position==='admin' && 
+                {(props.user.position==='admin' || props.user.position==='manager') && 
                 <NavLink to='/addProject' className="btn btn-primary stretched-link">
                     Create New Project
                 </NavLink>

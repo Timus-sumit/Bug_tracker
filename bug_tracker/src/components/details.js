@@ -21,7 +21,8 @@ class Details extends React.Component{
                     <h1>Project Title:</h1>
                     <h2 className="pageheader">{this.props.project.projectTitle}</h2>
                     <br/>
-                    <NavLink className="btn btn-primary stretched-link" to={`/editProject/${this.props.project._id}`}>Edit</NavLink>
+
+                    {(this.props.user.position==='admin' || this.props.user.position==='manager')&& <NavLink className="btn btn-primary stretched-link" to={`/editProject/${this.props.project._id}`}>Edit</NavLink>}
                 </div>
                 <div className="col-lg-6">
                     <h1> Description:</h1>
@@ -89,7 +90,8 @@ const mapStateToProps = (state,props)=>{
         project: state.projects.find((project)=>{
             return project._id===props.match.params.id;
         }),
-        tickets: state.tickets
+        tickets: state.tickets,
+        user: state.auth
     }
 }
 

@@ -78,8 +78,11 @@ class Loginpage extends React.Component {
 
     render(){
     return(
-        <div>
+        <div className="box-layout">
             <Col lg="6" md="8">
+                <div className="text-center">
+                    <h1 className="pageheader"><span>BUG TRACKER</span></h1>
+                </div>
                 <Card className="bg-secondary shadow border-0">
                     <CardBody className="px-lg-5 py-lg-5">
                         <div className="text-center text-muted mb-4">

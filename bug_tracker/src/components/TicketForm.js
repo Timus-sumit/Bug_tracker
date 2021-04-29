@@ -138,21 +138,21 @@ class TicketForm extends React.Component{
                     {this.state.error && <p>{this.state.error}</p>}
                     <h2>Title :</h2>
                     <div className="input-group">
-                    <input className="form-control" type="text" placeholder=" Title" value={this.state.title} onChange={this.onTitleChange} autoFocus/>
+                    <input disabled={(this.props.ticket && (this.props.user.position==='developer'||this.props.user.position==='submitter'))?true:false} className="form-control" type="text" placeholder=" Title" value={this.state.title} onChange={this.onTitleChange} autoFocus/>
                     </div>
                     <h2>Description :</h2>
                     <div className="input-group">
-                    <textarea className="form-control" type="text" placeholder="Description" value={this.state.description} onChange={this.onDescriptionChange}/>
+                    <textarea disabled={(this.props.ticket && (this.props.user.position==='developer'||this.props.user.position==='submitter'))?true:false} className="form-control" type="text" placeholder="Description" value={this.state.description} onChange={this.onDescriptionChange}/>
                     </div>
                     <h2>Project Name :</h2>
                     <div className="input-group">
-                        <input className="form-control" type="text" placeholder=" Project" value={this.state.project.name} disabled />
+                        <input className="form-control" type="text" placeholder=" Project" value={this.state.project.name} disabled={true} />
                     </div>
                     <div className="row">
                         <div className="col-lg-3">
                             <h2>Submitter :</h2>
                             <div className="input-group">
-                            <select className="select" value={this.state.submitter.name} onChange={this.onSubmitterChange}>
+                            <select disabled={(this.props.ticket && (this.props.user.position==='developer'||this.props.user.position==='submitter'))?true:false} className="select" value={this.state.submitter.name} onChange={this.onSubmitterChange}>
                                 <option value="" disabled selected hidden>Select a Submitter</option>
                                 {this.props.project.users.map((u)=>{
                                     const user = this.props.list.find((user)=>{
@@ -168,7 +168,7 @@ class TicketForm extends React.Component{
                         <div className="col-lg-3">
                             <h2>Developer :</h2>
                             <div className="input-group">
-                            <select className="select" value={this.state.developer.name} onChange={this.onDeveloperChange}>
+                            <select disabled={(this.props.ticket && (this.props.user.position==='developer'||this.props.user.position==='submitter'))?true:false} className="select" value={this.state.developer.name} onChange={this.onDeveloperChange}>
                                 <option value="" disabled selected hidden >Select a Developer</option>
                                 {this.props.project.users.map((u)=>{
                                     const user = this.props.list.find((user)=>{
@@ -184,7 +184,7 @@ class TicketForm extends React.Component{
                         <div className="col-lg-3">
                             <h2>Priority Level :</h2>
                             <div className="input-group">
-                            <select className="select" value={this.state.priority} onChange={this.onPriorityChange}>
+                            <select disabled={(this.props.ticket && (this.props.user.position==='developer'||this.props.user.position==='submitter'))?true:false} className="select" value={this.state.priority} onChange={this.onPriorityChange}>
                                 <option value="" disabled selected hidden>Priority Level</option>
                                 <option value="low">low</option>
                                 <option value="medium">medium</option>
@@ -208,7 +208,7 @@ class TicketForm extends React.Component{
                     </div>
                     
                     <div className="input-group">
-                    <button className="btn btn-success">{this.props.ticket?'Save':'Create'}</button>
+                    <button  className="btn btn-success">{this.props.ticket?'Save':'Create'}</button>
                     </div>
                 </form>
             </div>
