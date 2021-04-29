@@ -12,6 +12,7 @@ import {readUser} from './actions/auth';
 import {startSetUsers} from './actions/users';
 import {startSetProjects} from './actions/projects';
 import { setUserTickets } from './actions/tickets';
+import LoadingPage from './components/Loading';
 
 const store = configureStore();
 const jsx = (
@@ -28,7 +29,7 @@ const renderApp = ()=>{
     }
 }
 
-ReactDOM.render(<p>Loading...</p>,document.getElementById('root'))
+ReactDOM.render(<LoadingPage/>,document.getElementById('root'))
 
 firebase.auth().onAuthStateChanged((user)=>{
   if(user){
