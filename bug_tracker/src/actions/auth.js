@@ -15,7 +15,7 @@ export const login = ({uid,email,name,position})=>{
 export const readUser = (uid)=>{
     return(dispatch)=>{
 
-     return axios.get(`http://localhost:8080/users/${uid}`).then((response)=>{
+     return axios.get(`https://track-bugs.herokuapp.com/users/${uid}`).then((response)=>{
             const {name,uid,email,position,_id}=response.data
 
             dispatch({type:'LOGIN',name,uid,email,position,_id})
@@ -29,7 +29,7 @@ export const readUser = (uid)=>{
 export const startSignup = ({name,email,password,position})=>{
     return ()=>{
         return firebase.auth().createUserWithEmailAndPassword(email,password).then((cred)=>{
-                axios.post('http://localhost:8080/users',{name,email,position,uid:cred.uid})
+                axios.post('https://track-bugs.herokuapp.com/users',{name,email,position,uid:cred.uid})
                 
          })
     }
