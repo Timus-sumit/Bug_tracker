@@ -3,7 +3,7 @@ const axios = require('axios');
 export const startSetUsers = ()=>{
     return (dispatch)=>{
 
-        return axios.get(`http://localhost:8080/users`).then((response)=>{
+        return axios.get(`https://track-bugs.herokuapp.com/users`).then((response)=>{
             const list =[];
             response.data.forEach((user)=>{
                 list.push(user)
@@ -17,7 +17,7 @@ export const startSetUsers = ()=>{
 export const setRole = ({name,position})=>{
     return(dispatch)=>{
 
-     return axios.patch(`http://localhost:8080/users/${name}`,{position})
+     return axios.patch(`https://track-bugs.herokuapp.com/users/${name}`,{position})
 
     }
 
