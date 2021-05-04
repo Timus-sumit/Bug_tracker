@@ -108,6 +108,7 @@ class ManageUsers extends React.Component {
             // console.log(new_users)
             this.props.dispatch(addUser(this.props.project._id,new_users)).then(()=>{
                 window.location.reload()
+                this.props.history.push('/')
             })
         }
     }
